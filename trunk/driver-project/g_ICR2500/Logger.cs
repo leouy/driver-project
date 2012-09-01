@@ -11,7 +11,7 @@ namespace g_ICR2500
         {
             try
             { 
-
+                 
                 //Pass the filepath and filename to the StreamWriter Constructor
                 StreamWriter sw = File.AppendText("C:\\Log.txt");
                 //Write a line of text
