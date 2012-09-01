@@ -10,7 +10,7 @@ namespace g_ICR2500
         public static void LogEx(string message)
         {
             try
-            {
+            { 
 
                 //Pass the filepath and filename to the StreamWriter Constructor
                 StreamWriter sw = File.AppendText("C:\\Log.txt");
