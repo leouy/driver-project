@@ -633,6 +633,7 @@ namespace g_ICR2500
 
             if (!BandScopeVisible)
             {
+                BandScopeVisible = !BandScopeVisible;
                 g_ICR2500_databag.GetInstance().IMM = false;
                 timerFFMDMM.Enabled = true;
                 g_ICR2500_decl.UsedParams = 4097;
@@ -659,6 +660,7 @@ namespace g_ICR2500
             }
             else
             {
+                BandScopeVisible = !BandScopeVisible;
                 timerFFMDMM.Enabled = false;
                 object pVar = null;
                 g_ICR2500.dci_SetRemote((int)e_Commands.DH_MEAS_STOP, 0, ref pVar);
