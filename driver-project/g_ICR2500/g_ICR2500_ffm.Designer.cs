@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pnl_MeasParam = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.lbl_Hz = new System.Windows.Forms.Label();
             this.btn_ATT = new System.Windows.Forms.Button();
             this.btn_AGC = new System.Windows.Forms.Button();
@@ -44,8 +43,11 @@
             this.lblFilter = new System.Windows.Forms.Label();
             this.lblMode = new System.Windows.Forms.Label();
             this.cmb_Mode = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.lbl_dBm = new System.Windows.Forms.Label();
             this.pnl_Data = new System.Windows.Forms.Panel();
+            this.pct_ON = new System.Windows.Forms.PictureBox();
+            this.pct_OFF = new System.Windows.Forms.PictureBox();
             this.txt_SignalStrength = new System.Windows.Forms.TextBox();
             this.lbl_VolumeValue = new System.Windows.Forms.Label();
             this.trk_volume = new System.Windows.Forms.TrackBar();
@@ -57,15 +59,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.timerFFM = new System.Windows.Forms.Timer(this.components);
             this.timerFFMDMM = new System.Windows.Forms.Timer(this.components);
-            this.pct_OFF = new System.Windows.Forms.PictureBox();
-            this.pct_ON = new System.Windows.Forms.PictureBox();
             this.pnl_MeasParam.SuspendLayout();
             this.pnl_Data.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pct_ON)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pct_OFF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_volume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_Squelch)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pct_OFF)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pct_ON)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_MeasParam
@@ -88,16 +88,6 @@
             this.pnl_MeasParam.Name = "pnl_MeasParam";
             this.pnl_MeasParam.Size = new System.Drawing.Size(744, 65);
             this.pnl_MeasParam.TabIndex = 104;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(356, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 21);
-            this.button1.TabIndex = 102;
-            this.button1.Text = "Start";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lbl_Hz
             // 
@@ -231,6 +221,16 @@
             this.cmb_Mode.TabIndex = 4;
             this.cmb_Mode.SelectedIndexChanged += new System.EventHandler(this.cmb_Mode_SelectedIndexChanged);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(356, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(82, 21);
+            this.button1.TabIndex = 102;
+            this.button1.Text = "Start";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // lbl_dBm
             // 
             this.lbl_dBm.AutoSize = true;
@@ -243,15 +243,33 @@
             // pnl_Data
             // 
             this.pnl_Data.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnl_Data.Controls.Add(this.pct_ON);
             this.pnl_Data.Controls.Add(this.button1);
             this.pnl_Data.Controls.Add(this.pct_OFF);
             this.pnl_Data.Controls.Add(this.lbl_dBm);
             this.pnl_Data.Controls.Add(this.txt_SignalStrength);
+            this.pnl_Data.Controls.Add(this.pct_ON);
             this.pnl_Data.Location = new System.Drawing.Point(3, 85);
             this.pnl_Data.Name = "pnl_Data";
             this.pnl_Data.Size = new System.Drawing.Size(744, 40);
             this.pnl_Data.TabIndex = 105;
+            // 
+            // pct_ON
+            // 
+            this.pct_ON.Image = global::g_ICR2500.Properties.Resources.on;
+            this.pct_ON.Location = new System.Drawing.Point(314, 7);
+            this.pct_ON.Name = "pct_ON";
+            this.pct_ON.Size = new System.Drawing.Size(25, 25);
+            this.pct_ON.TabIndex = 112;
+            this.pct_ON.TabStop = false;
+            // 
+            // pct_OFF
+            // 
+            this.pct_OFF.Image = global::g_ICR2500.Properties.Resources.off;
+            this.pct_OFF.Location = new System.Drawing.Point(314, 7);
+            this.pct_OFF.Name = "pct_OFF";
+            this.pct_OFF.Size = new System.Drawing.Size(25, 25);
+            this.pct_OFF.TabIndex = 111;
+            this.pct_OFF.TabStop = false;
             // 
             // txt_SignalStrength
             // 
@@ -363,24 +381,6 @@
             // 
             this.timerFFMDMM.Tick += new System.EventHandler(this.timerFFMDMM_Tick);
             // 
-            // pct_OFF
-            // 
-            this.pct_OFF.Image = global::g_ICR2500.Properties.Resources.off;
-            this.pct_OFF.Location = new System.Drawing.Point(314, 7);
-            this.pct_OFF.Name = "pct_OFF";
-            this.pct_OFF.Size = new System.Drawing.Size(25, 25);
-            this.pct_OFF.TabIndex = 111;
-            this.pct_OFF.TabStop = false;
-            // 
-            // pct_ON
-            // 
-            this.pct_ON.Image = global::g_ICR2500.Properties.Resources.on;
-            this.pct_ON.Location = new System.Drawing.Point(314, 7);
-            this.pct_ON.Name = "pct_ON";
-            this.pct_ON.Size = new System.Drawing.Size(25, 25);
-            this.pct_ON.TabIndex = 112;
-            this.pct_ON.TabStop = false;
-            // 
             // g_ICR2500_ffm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -396,12 +396,12 @@
             this.pnl_MeasParam.PerformLayout();
             this.pnl_Data.ResumeLayout(false);
             this.pnl_Data.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pct_ON)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pct_OFF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_volume)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_Squelch)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pct_OFF)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pct_ON)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

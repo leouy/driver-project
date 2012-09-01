@@ -603,7 +603,7 @@ namespace g_ICR2500
         {
             if (g_ICR2500_decl.STATIONMODE != (int)g_ICR2500_decl.UNIT.C)
             {
-                if (BandScopeVisible)
+                if (!BandScopeVisible)
                 {
                     IcomManager.TurnOn();
                     IcomManager.AutoUpdate(true);
@@ -631,7 +631,7 @@ namespace g_ICR2500
                 g_ICR2500.dci_SetRemote((int)e_Commands.DH_MEAS_SET, 0, ref pVar3);
             }
 
-            if (BandScopeVisible)
+            if (!BandScopeVisible)
             {
                 g_ICR2500_databag.GetInstance().IMM = false;
                 timerFFMDMM.Enabled = true;
