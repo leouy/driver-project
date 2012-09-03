@@ -163,7 +163,7 @@ namespace g_ICR2500
                 g_ICR2500_databag.GetInstance().IcomOn = true;
 
                 IcomManager.SetSquelch(g_ICR2500_databag.GetInstance().Squelch);
-                IcomManager.SetVolume("00");
+                //IcomManager.SetVolume("00");
 
                 InitMeas();
 
@@ -227,7 +227,7 @@ namespace g_ICR2500
                     IcomManager.TurnOn();
                     g_ICR2500_databag.GetInstance().IcomOn = true;
                     IcomManager.SetSquelch(g_ICR2500_databag.GetInstance().Squelch);
-                    IcomManager.SetVolume("00");
+                   // IcomManager.SetVolume("00");
                 }
 
             }
