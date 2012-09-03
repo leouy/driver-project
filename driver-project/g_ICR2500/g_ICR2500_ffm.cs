@@ -457,9 +457,12 @@ namespace g_ICR2500
         {
             if (!string.IsNullOrEmpty(g_ICR2500_databag.GetInstance().SignalStrength))
             {
-                this.txt_SignalStrength.Text = g_ICR2500_databag.GetInstance().SignalStrength;
-                double var = double.Parse(g_ICR2500_databag.GetInstance().SignalStrength);
-                UpdateChartDMM(var.ToString());
+                if (g_ICR2500_databag.GetInstance().SignalStrength.Length < 5)
+                {
+                    this.txt_SignalStrength.Text = g_ICR2500_databag.GetInstance().SignalStrength;
+                    double var = double.Parse(g_ICR2500_databag.GetInstance().SignalStrength);
+                    UpdateChartDMM(var.ToString());
+                }
             }
         }
 
