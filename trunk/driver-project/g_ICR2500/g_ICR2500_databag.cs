@@ -31,7 +31,7 @@ namespace g_ICR2500
             StartFreq = "88000000";
             EndFreq = "105000000";
             Step = "5000";
-            CurrentFreq = "88000000";
+            CurrentFreq = "0";
             BandScope = false;
             BandScopeScan = false;
             CurrentMeasure = false;
