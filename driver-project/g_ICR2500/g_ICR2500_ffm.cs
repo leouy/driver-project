@@ -28,13 +28,13 @@ namespace g_ICR2500
         //public double StartFrequency { get; set; }
         //public double StopFrequency { get; set; }
 
-        bool NBOn = false;
-        bool AttOn = false;
-        bool AgcOn = false;
+        //bool NBOn = false;
+        //bool AttOn = false;
+        //bool AgcOn = false;
 
         g_ICR2500_constants.FrequencyStep FrequencyVal;
-        g_ICR2500_constants.Filter FilterVal;
-        g_ICR2500_constants.Mode ModeVal;
+        //g_ICR2500_constants.Filter FilterVal;
+        //g_ICR2500_constants.Mode ModeVal;
 
         string CurrentVol;
         string CurrentSquelch;
@@ -56,11 +56,11 @@ namespace g_ICR2500
         private void g_ICR2500_ffm_Load(object sender, EventArgs e)
         {
             FrequencyStepLoad();
-            FilterLoad();
-            ModesLoad();
+            //FilterLoad();
+            //ModesLoad();
             cmb_step.SelectedIndex = 0;
-            cmb_Filter.SelectedIndex = 4;
-            cmb_Mode.SelectedIndex = 5;
+            //cmb_Filter.SelectedIndex = 4;
+            //cmb_Mode.SelectedIndex = 5;
             FrequencyVal = (g_ICR2500_constants.FrequencyStep)cmb_step.SelectedItem;
 
         }
@@ -73,13 +73,13 @@ namespace g_ICR2500
                 IcomManager.SetBaudRate("05");
             }
 
-            if (g_ICR2500_decl.STATIONMODE == (int)g_ICR2500_decl.UNIT.M)
-            {
-                object pVar2 = (object)FilterVal.Name;
-                object pVar3 = (object)ModeVal.Name;
-                g_ICR2500.dci_SetRemote((int)e_Commands.DH_IFBW, 0, ref pVar2);
-                g_ICR2500.dci_SetRemote((int)e_Commands.DH_DEMOD, 0, ref pVar3);
-            }
+            //if (g_ICR2500_decl.STATIONMODE == (int)g_ICR2500_decl.UNIT.M)
+            //{
+            //    object pVar2 = (object)FilterVal.Name;
+            //    object pVar3 = (object)ModeVal.Name;
+            //    g_ICR2500.dci_SetRemote((int)e_Commands.DH_IFBW, 0, ref pVar2);
+            //    g_ICR2500.dci_SetRemote((int)e_Commands.DH_DEMOD, 0, ref pVar3);
+            //}
 
             //Freq - Mode - Filter
             string[] a = txt_freqMask.Text.Split('.');
@@ -87,8 +87,6 @@ namespace g_ICR2500
             object pVar = (object)freqToArgus;
             g_ICR2500.dci_Data((Int32)ExtDrv.e_Commands.DH_NFY_CHANGE, (Int32)ExtDrv.e_Commands.DH_FREQ_FFM_GET, ref pVar);
 
-            //IcomManager.SetFrequency(g_ICR2500_utils.ParseFullFrecuency(String.Join("", a)), FilterVal.Value, ModeVal.Value);
-            //IcomManager.SetVolume(CurrentVol);
             int valueSq = trk_Squelch.Value;
             CurrentSquelch = g_ICR2500_utils.ConvertIntToHex(valueSq);
             if (g_ICR2500_decl.STATIONMODE != (int)g_ICR2500_decl.UNIT.C)
@@ -114,24 +112,24 @@ namespace g_ICR2500
             cmb_step.Items.Add(new g_ICR2500_constants.FrequencyStep("1.000.000 Hz", 1000000));
         }
 
-        private void FilterLoad()
-        {
-            cmb_Filter.Items.Add(new g_ICR2500_constants.Filter("3 KHz", "00"));
-            cmb_Filter.Items.Add(new g_ICR2500_constants.Filter("6 KHz", "01"));
-            cmb_Filter.Items.Add(new g_ICR2500_constants.Filter("15 KHz", "02"));
-            cmb_Filter.Items.Add(new g_ICR2500_constants.Filter("50 KHz", "03"));
-            cmb_Filter.Items.Add(new g_ICR2500_constants.Filter("230 KHz", "04"));
-        }
+        //private void FilterLoad()
+        //{
+        //    cmb_Filter.Items.Add(new g_ICR2500_constants.Filter("3 KHz", "00"));
+        //    cmb_Filter.Items.Add(new g_ICR2500_constants.Filter("6 KHz", "01"));
+        //    cmb_Filter.Items.Add(new g_ICR2500_constants.Filter("15 KHz", "02"));
+        //    cmb_Filter.Items.Add(new g_ICR2500_constants.Filter("50 KHz", "03"));
+        //    cmb_Filter.Items.Add(new g_ICR2500_constants.Filter("230 KHz", "04"));
+        //}
 
-        private void ModesLoad()
-        {
-            cmb_Mode.Items.Add(new g_ICR2500_constants.Mode("LSB", "00"));
-            cmb_Mode.Items.Add(new g_ICR2500_constants.Mode("USB", "01"));
-            cmb_Mode.Items.Add(new g_ICR2500_constants.Mode("AM", "02"));
-            cmb_Mode.Items.Add(new g_ICR2500_constants.Mode("CW", "03"));
-            cmb_Mode.Items.Add(new g_ICR2500_constants.Mode("NFM", "05"));
-            cmb_Mode.Items.Add(new g_ICR2500_constants.Mode("WFM", "06"));
-        }
+        //private void ModesLoad()
+        //{
+        //    cmb_Mode.Items.Add(new g_ICR2500_constants.Mode("LSB", "00"));
+        //    cmb_Mode.Items.Add(new g_ICR2500_constants.Mode("USB", "01"));
+        //    cmb_Mode.Items.Add(new g_ICR2500_constants.Mode("AM", "02"));
+        //    cmb_Mode.Items.Add(new g_ICR2500_constants.Mode("CW", "03"));
+        //    cmb_Mode.Items.Add(new g_ICR2500_constants.Mode("NFM", "05"));
+        //    cmb_Mode.Items.Add(new g_ICR2500_constants.Mode("WFM", "06"));
+        //}
 
 
         #endregion Loads
@@ -299,42 +297,42 @@ namespace g_ICR2500
             }
         }
 
-        private void cmb_Filter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            FilterVal = (g_ICR2500_constants.Filter)cmb_Filter.SelectedItem;
-            g_ICR2500_databag.GetInstance().Filter = FilterVal.Value;
-            string[] a = txt_freqMask.Text.Split('.');
+        //private void cmb_Filter_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    FilterVal = (g_ICR2500_constants.Filter)cmb_Filter.SelectedItem;
+        //    g_ICR2500_databag.GetInstance().Filter = FilterVal.Value;
+        //    string[] a = txt_freqMask.Text.Split('.');
 
-            object pVar2 = (object)FilterVal.Name;
+        //    object pVar2 = (object)FilterVal.Name;
 
-            if (g_ICR2500_decl.STATIONMODE == (int)g_ICR2500_decl.UNIT.C)
-            {
-                g_ICR2500.dci_SetRemote((int)e_Commands.DH_IFBW, 0, ref pVar2);
-            }
+        //    if (g_ICR2500_decl.STATIONMODE == (int)g_ICR2500_decl.UNIT.C)
+        //    {
+        //        g_ICR2500.dci_SetRemote((int)e_Commands.DH_IFBW, 0, ref pVar2);
+        //    }
 
 
-            string freqToArgus = g_ICR2500_utils.ParseFullFrecuency(String.Join("", a));
-            object pVar = (object)freqToArgus;
-            g_ICR2500.dci_Data((Int32)ExtDrv.e_Commands.DH_NFY_CHANGE, (Int32)ExtDrv.e_Commands.DH_FREQ_FFM_GET, ref pVar);
-        }
+        //    string freqToArgus = g_ICR2500_utils.ParseFullFrecuency(String.Join("", a));
+        //    object pVar = (object)freqToArgus;
+        //    g_ICR2500.dci_Data((Int32)ExtDrv.e_Commands.DH_NFY_CHANGE, (Int32)ExtDrv.e_Commands.DH_FREQ_FFM_GET, ref pVar);
+        //}
 
-        private void cmb_Mode_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ModeVal = (g_ICR2500_constants.Mode)cmb_Mode.SelectedItem;
-            g_ICR2500_databag.GetInstance().Mode = ModeVal.Value;
-            string[] a = txt_freqMask.Text.Split('.');
+        //private void cmb_Mode_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    ModeVal = (g_ICR2500_constants.Mode)cmb_Mode.SelectedItem;
+        //    g_ICR2500_databag.GetInstance().Mode = ModeVal.Value;
+        //    string[] a = txt_freqMask.Text.Split('.');
 
-            object pVar2 = (object)ModeVal.Name;
+        //    object pVar2 = (object)ModeVal.Name;
 
-            if (g_ICR2500_decl.STATIONMODE == (int)g_ICR2500_decl.UNIT.C)
-            {
-                g_ICR2500.dci_SetRemote((int)e_Commands.DH_DEMOD, 0, ref pVar2);
-            }
+        //    if (g_ICR2500_decl.STATIONMODE == (int)g_ICR2500_decl.UNIT.C)
+        //    {
+        //        g_ICR2500.dci_SetRemote((int)e_Commands.DH_DEMOD, 0, ref pVar2);
+        //    }
 
-            string freqToArgus = g_ICR2500_utils.ParseFullFrecuency(String.Join("", a));
-            object pVar = (object)freqToArgus;
-            g_ICR2500.dci_Data((Int32)ExtDrv.e_Commands.DH_NFY_MEAS_DATA, (Int32)ExtDrv.e_Commands.DH_FREQ_FFM_GET, ref pVar);
-        }
+        //    string freqToArgus = g_ICR2500_utils.ParseFullFrecuency(String.Join("", a));
+        //    object pVar = (object)freqToArgus;
+        //    g_ICR2500.dci_Data((Int32)ExtDrv.e_Commands.DH_NFY_MEAS_DATA, (Int32)ExtDrv.e_Commands.DH_FREQ_FFM_GET, ref pVar);
+        //}
 
         private void btn_upFreq_Click(object sender, EventArgs e)
         {
@@ -350,7 +348,8 @@ namespace g_ICR2500
             }
             else //CM
             {
-                IcomManager.SetFrequency(g_ICR2500_utils.ParseFullFrecuency(String.Join("", a)), FilterVal.Value, ModeVal.Value);
+                IcomManager.SetFrequency(g_ICR2500_utils.ParseFullFrecuency(String.Join("", a)), 
+                    g_ICR2500_databag.GetInstance().Filter, g_ICR2500_databag.GetInstance().Mode);
 
             }
         }
@@ -369,14 +368,9 @@ namespace g_ICR2500
             }
             else //CM
             {
-                IcomManager.SetFrequency(g_ICR2500_utils.ParseFullFrecuency(String.Join("", a)), FilterVal.Value, ModeVal.Value);
-
+                IcomManager.SetFrequency(g_ICR2500_utils.ParseFullFrecuency(String.Join("", a)),
+                    g_ICR2500_databag.GetInstance().Filter, g_ICR2500_databag.GetInstance().Mode);
             }
-
-            // IcomManager.SetFrequency(g_ICR2500_utils.ParseFullFrecuency(String.Join("", a)), FilterVal.Value, ModeVal.Value);
-            //StartFrequency = Double.Parse(g_ICR2500_databag.GetInstance().CurrentFreq) - Double.Parse(((g_ICR2500_constants.Span)cmb_Span.SelectedItem).Value);
-            //StopFrequency = Double.Parse(g_ICR2500_databag.GetInstance().CurrentFreq) + Double.Parse(((g_ICR2500_constants.Span)cmb_Span.SelectedItem).Value);
-            //if (BandScopeVisible) BandScopeFunction();
         }
 
         public void txt_freqMask_KeyUp(object sender, KeyEventArgs e)
@@ -393,66 +387,66 @@ namespace g_ICR2500
         }
 
 
-        private void btn_NB_Click(object sender, EventArgs e)
-        {
-            NBOn = !NBOn;
+        //private void btn_NB_Click(object sender, EventArgs e)
+        //{
+        //    NBOn = !NBOn;
 
-            if (g_ICR2500_decl.STATIONMODE != (int)g_ICR2500_decl.UNIT.C)
-            {
-                IcomManager.SetNoiseBlanker(NBOn);
-            }
-            //
-            if (NBOn)
-            {
-                btn_NB.ForeColor = Color.Red;
-            }
-            else
-            {
-                btn_NB.ForeColor = Color.Black;
-            }
-        }
+        //    if (g_ICR2500_decl.STATIONMODE != (int)g_ICR2500_decl.UNIT.C)
+        //    {
+        //        IcomManager.SetNoiseBlanker(NBOn);
+        //    }
+        //    //
+        //    if (NBOn)
+        //    {
+        //        btn_NB.ForeColor = Color.Red;
+        //    }
+        //    else
+        //    {
+        //        btn_NB.ForeColor = Color.Black;
+        //    }
+        //}
 
-        private void btn_AGC_Click(object sender, EventArgs e)
-        {
-            AgcOn = !AgcOn;
-            if (g_ICR2500_decl.STATIONMODE != (int)g_ICR2500_decl.UNIT.C)
-            {
-                IcomManager.SetAgc(AgcOn);
-            }
+        //private void btn_AGC_Click(object sender, EventArgs e)
+        //{
+        //    AgcOn = !AgcOn;
+        //    if (g_ICR2500_decl.STATIONMODE != (int)g_ICR2500_decl.UNIT.C)
+        //    {
+        //        IcomManager.SetAgc(AgcOn);
+        //    }
 
-            if (AgcOn)
-            {
-                btn_AGC.ForeColor = Color.Red;
-            }
-            else
-            {
-                btn_AGC.ForeColor = Color.Black;
-            }
-        }
+        //    if (AgcOn)
+        //    {
+        //        btn_AGC.ForeColor = Color.Red;
+        //    }
+        //    else
+        //    {
+        //        btn_AGC.ForeColor = Color.Black;
+        //    }
+        //}
 
-        private void btn_ATT_Click(object sender, EventArgs e)
-        {
-            AttOn = !AttOn;
-            string res = AttOn ? "20 dB" : "0 dB";
-            object pVar = (object)res;
-            if (g_ICR2500_decl.STATIONMODE == (int)g_ICR2500_decl.UNIT.C)
-            {
-                g_ICR2500.dci_SetRemote((int)e_Commands.DH_RFATTN, 0, ref pVar);
-            }
-            else
-            {
-                IcomManager.SetAttenuator(AttOn);
-            }
+        //private void btn_ATT_Click(object sender, EventArgs e)
+        //{
+        //    AttOn = !AttOn;
+        //    string res = AttOn ? "20 dB" : "0 dB";
+        //    object pVar = (object)res;
+        //    if (g_ICR2500_decl.STATIONMODE == (int)g_ICR2500_decl.UNIT.C)
+        //    {
+        //        g_ICR2500.dci_SetRemote((int)e_Commands.DH_RFATTN, 0, ref pVar);
+        //    }
+        //    else
+        //    {
+        //        IcomManager.SetAttenuator(AttOn);
+        //    }
 
-            if (AttOn)
-            {
-                btn_ATT.ForeColor = Color.Red;
-            }
-            else
-            {
-                btn_ATT.ForeColor = Color.Black;
-            }
-        }
+        //    if (AttOn)
+        //    {
+        //        btn_ATT.ForeColor = Color.Red;
+        //    }
+        //    else
+        //    {
+        //        btn_ATT.ForeColor = Color.Black;
+        //    }
+        //}
         #endregion FormClicks/Values Changed
 
         public void SetFrequency()
@@ -476,7 +470,7 @@ namespace g_ICR2500
             }
             else //CM
             {
-                IcomManager.SetFrequency(freqToArgus, FilterVal.Value, ModeVal.Value);
+                IcomManager.SetFrequency(freqToArgus, g_ICR2500_databag.GetInstance().Filter, g_ICR2500_databag.GetInstance().Mode);
             }
         }
 
@@ -634,6 +628,8 @@ namespace g_ICR2500
             if (!BandScopeVisible)
             {
                 BandScopeVisible = !BandScopeVisible;
+                pct_ON.Visible = true;
+                pct_OFF.Visible = false;
                 g_ICR2500_databag.GetInstance().IMM = false;
                 timerFFMDMM.Enabled = true;
                 g_ICR2500_decl.UsedParams = 4097;
@@ -661,10 +657,13 @@ namespace g_ICR2500
             else
             {
                 BandScopeVisible = !BandScopeVisible;
+                pct_ON.Visible = false;
+                pct_OFF.Visible = true;
                 timerFFMDMM.Enabled = false;
                 object pVar = null;
                 g_ICR2500.dci_SetRemote((int)e_Commands.DH_MEAS_STOP, 0, ref pVar);
             }
+            SetFrequency();
         }
     }
 }

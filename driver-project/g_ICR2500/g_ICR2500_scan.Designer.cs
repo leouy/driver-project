@@ -305,7 +305,7 @@
             this.Controls.Add(this.pnl_MeasParam);
             this.Controls.Add(this.pnl_StartBtn);
             this.Name = "g_ICR2500_scan";
-            this.Size = new System.Drawing.Size(750, 500);
+            this.Size = new System.Drawing.Size(750, 400);
             this.pnl_GraphLimits.ResumeLayout(false);
             this.pnl_GraphLimits.PerformLayout();
             this.pnl_MeasParam.ResumeLayout(false);
