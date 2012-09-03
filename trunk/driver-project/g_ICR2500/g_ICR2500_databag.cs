@@ -45,17 +45,21 @@ namespace g_ICR2500
 
         public string SignalStrength
         {
-            get { return _signalStrength; }
+            get
+            { 
+                return _signalStrength; 
+            }
             set
             {
-                _signalStrength = value;
+                if(value.Length < 5)
+                    _signalStrength = value;
                 bool M = g_ICR2500_decl.STATIONMODE == (int)g_ICR2500_decl.UNIT.M;
 
                 if (!_dataBag.BandScopeScan && !M)
                 {
                     Form.FFMTab.Invoke(new EventHandler(delegate
                     {
-                        if(_signalStrength.Length < 4)
+                        if(_signalStrength.Length < 5)
                             Form.FFMTab.UpdateSignalStrength();
                     }));
                 }
