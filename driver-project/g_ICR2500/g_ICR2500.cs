@@ -897,8 +897,8 @@ namespace g_ICR2500
                 while (!(double.Parse(data.CurrentFreq) > double.Parse(data.EndFreq)))
                 {
                     string currFreq = g_ICR2500_utils.ParseFullFrecuency(data.CurrentFreq);
-
-                    IcomManager.SetFrequency(currFreq, "04", "06");
+                   
+                    IcomManager.SetFrequency(currFreq, data.Filter, data.Mode);
                     IcomManager.AskFrequencyStrength();
 
                     g_ICR2500_databag.GetInstance().CurrentFreq = currFreq;

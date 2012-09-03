@@ -443,7 +443,8 @@ namespace g_ICR2500
                 }
                 else //CM
                 {
-                    IcomManager.SetFrequency(currFreq, "04", "06");
+                    var data = g_ICR2500_databag.GetInstance();
+                    IcomManager.SetFrequency(currFreq, data.Filter, data.Mode);
                     IcomManager.AskFrequencyStrength();
                 }
 
