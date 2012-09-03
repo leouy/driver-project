@@ -212,7 +212,6 @@ namespace g_ICR2500
         {
             FilterVal = (g_ICR2500_constants.Filter)cmb_Filter.SelectedItem;
             g_ICR2500_databag.GetInstance().Filter = FilterVal.Value;
-           // string[] a = g_ICR2500_databag.GetInstance().CurrentFreq.Split('.');
 
             object pVar2 = (object)FilterVal.Name;
 
@@ -220,15 +219,12 @@ namespace g_ICR2500
             {
                 g_ICR2500.dci_SetRemote((int)e_Commands.DH_IFBW, 0, ref pVar2);
             }
-
-
-            string freqToArgus = g_ICR2500_databag.GetInstance().CurrentFreq;
-            object pVar = (object)freqToArgus;
-            g_ICR2500.dci_Data((Int32)ExtDrv.e_Commands.DH_NFY_CHANGE, (Int32)ExtDrv.e_Commands.DH_FREQ_FFM_GET, ref pVar);
-            if (g_ICR2500_decl.STATIONMODE != (int)g_ICR2500_decl.UNIT.C)
+            else 
             {
+                string freqToArgus = g_ICR2500_databag.GetInstance().CurrentFreq;
+                object pVar = (object)freqToArgus;
+                g_ICR2500.dci_Data((Int32)ExtDrv.e_Commands.DH_NFY_CHANGE, (Int32)ExtDrv.e_Commands.DH_FREQ_FFM_GET, ref pVar);
                 IcomManager.SetFrequency(freqToArgus, g_ICR2500_databag.GetInstance().Filter, g_ICR2500_databag.GetInstance().Mode);
-
             }
         }
 
