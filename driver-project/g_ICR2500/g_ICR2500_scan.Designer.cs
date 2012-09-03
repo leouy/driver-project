@@ -62,12 +62,12 @@
             // 
             this.txt_Step.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Step.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Overwrite;
-            this.txt_Step.Location = new System.Drawing.Point(232, 71);
-            this.txt_Step.Mask = "000000";
+            this.txt_Step.Location = new System.Drawing.Point(179, 71);
+            this.txt_Step.Mask = "0000000";
             this.txt_Step.Name = "txt_Step";
             this.txt_Step.PromptChar = '0';
             this.txt_Step.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_Step.Size = new System.Drawing.Size(63, 26);
+            this.txt_Step.Size = new System.Drawing.Size(116, 26);
             this.txt_Step.TabIndex = 102;
             this.txt_Step.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txt_Step.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;

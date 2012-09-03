@@ -385,68 +385,6 @@ namespace g_ICR2500
         {
             FrequencyVal = (g_ICR2500_constants.FrequencyStep)cmb_step.SelectedItem;
         }
-
-
-        //private void btn_NB_Click(object sender, EventArgs e)
-        //{
-        //    NBOn = !NBOn;
-
-        //    if (g_ICR2500_decl.STATIONMODE != (int)g_ICR2500_decl.UNIT.C)
-        //    {
-        //        IcomManager.SetNoiseBlanker(NBOn);
-        //    }
-        //    //
-        //    if (NBOn)
-        //    {
-        //        btn_NB.ForeColor = Color.Red;
-        //    }
-        //    else
-        //    {
-        //        btn_NB.ForeColor = Color.Black;
-        //    }
-        //}
-
-        //private void btn_AGC_Click(object sender, EventArgs e)
-        //{
-        //    AgcOn = !AgcOn;
-        //    if (g_ICR2500_decl.STATIONMODE != (int)g_ICR2500_decl.UNIT.C)
-        //    {
-        //        IcomManager.SetAgc(AgcOn);
-        //    }
-
-        //    if (AgcOn)
-        //    {
-        //        btn_AGC.ForeColor = Color.Red;
-        //    }
-        //    else
-        //    {
-        //        btn_AGC.ForeColor = Color.Black;
-        //    }
-        //}
-
-        //private void btn_ATT_Click(object sender, EventArgs e)
-        //{
-        //    AttOn = !AttOn;
-        //    string res = AttOn ? "20 dB" : "0 dB";
-        //    object pVar = (object)res;
-        //    if (g_ICR2500_decl.STATIONMODE == (int)g_ICR2500_decl.UNIT.C)
-        //    {
-        //        g_ICR2500.dci_SetRemote((int)e_Commands.DH_RFATTN, 0, ref pVar);
-        //    }
-        //    else
-        //    {
-        //        IcomManager.SetAttenuator(AttOn);
-        //    }
-
-        //    if (AttOn)
-        //    {
-        //        btn_ATT.ForeColor = Color.Red;
-        //    }
-        //    else
-        //    {
-        //        btn_ATT.ForeColor = Color.Black;
-        //    }
-        //}
         #endregion FormClicks/Values Changed
 
         public void SetFrequency()
@@ -456,7 +394,7 @@ namespace g_ICR2500
             if (ValidateFreq < 10000 || ValidateFreq > 3299999999)
             {
                 MessageBox.Show("La frecuencia no puede ser menor a 0.010 MHz ni mayor a 3299.99 MHz.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txt_freqMask.Text = g_ICR2500_databag.GetInstance().CurrentFreq;
+                txt_freqMask.Text =g_ICR2500_utils.ParseFullFrecuency(g_ICR2500_databag.GetInstance().CurrentFreq);
                 return;
             }
 
