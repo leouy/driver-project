@@ -55,7 +55,8 @@ namespace g_ICR2500
                 {
                     Form.FFMTab.Invoke(new EventHandler(delegate
                     {
-                        Form.FFMTab.UpdateSignalStrength();
+                        if(_signalStrength.Length < 4)
+                            Form.FFMTab.UpdateSignalStrength();
                     }));
                 }
             }
