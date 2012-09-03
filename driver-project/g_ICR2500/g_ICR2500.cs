@@ -734,7 +734,7 @@ namespace g_ICR2500
 
                             IcomManager.SetBaudRate("05");
                             IcomManager.SetFrequency(g_ICR2500_utils.ParseFullFrecuency(FreqVal), FilterVal, ModeVal);
-                            IcomManager.SetVolume("60");
+                            IcomManager.SetVolume("00");
                             IcomManager.SetSquelch("00");
 
                         }
@@ -855,7 +855,7 @@ namespace g_ICR2500
 
                     IcomManager.SetFrequency(freq, filter, mode);
                     IcomManager.SetBaudRate("05");
-                    IcomManager.SetVolume("60");
+                    IcomManager.SetVolume("00");
                     IcomManager.SetSquelch("00");
                     IcomManager.SetAttenuator(att);
 
@@ -863,7 +863,7 @@ namespace g_ICR2500
 
                 case "Scan Level":
                     IcomManager.SetBaudRate("05");
-                    IcomManager.SetVolume("60");
+                    IcomManager.SetVolume("00");
                     IcomManager.SetSquelch("00");
                     data.CurrentFreq = data.StartFreq;
                     g_ICR2500_decl.ACK_RCV = true;
