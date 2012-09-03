@@ -77,7 +77,7 @@ namespace g_ICR2500
             cmb_Filter.SelectedIndex = 4;
             cmb_Mode.SelectedIndex = 5;
         }
-
+               
         private void g_ICR2500_frm_FormClosed(object sender, FormClosedEventArgs e)
         {
             object oVar = null;
@@ -138,7 +138,7 @@ namespace g_ICR2500
                 g_ICR2500_databag.GetInstance().IMM = false;
                 g_ICR2500_databag.GetInstance().M_Type = "Level";
                 g_ICR2500_decl.UsedParams = 4097;
-
+                g_ICR2500_databag.GetInstance().SignalStrength = "-127";
 
 
             }
@@ -310,5 +310,7 @@ namespace g_ICR2500
                 btn_ATT.ForeColor = Color.Black;
             }
         }
+
+        
     }
 }
