@@ -142,7 +142,7 @@ namespace g_ICR2500
             trk_volume.SmallChange = 1;
             trk_volume.Height = 104;
             trk_volume.Maximum = 100;
-            trk_volume.Value = 50;
+            trk_volume.Value = 0;
             CurrentVol = g_ICR2500_utils.ConvertIntToHex(trk_volume.Value);
         }
 
