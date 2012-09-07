@@ -267,13 +267,26 @@ namespace g_ICR2500
 
                 case e_Commands.DH_LOGNAME:
                     //Logical name used in ARGUS (Optional)
-                    //decl.RecSettings.Logname = (string)pVar;
-                    ////Set dialog-caption.
-                    //decl.f.Text = decl.RecSettings.Logname + " " + decl.RecSettings.Drvmode;
+                    g_ICR2500_decl.RcvSettings.Logname = (string)pVar;
+                    //Set dialog-caption.
+                    g_ICR2500_decl.f.Text = g_ICR2500_decl.RcvSettings.Logname + " " + g_ICR2500_decl.RcvSettings.Drvmode;
                     break;
 
                 case e_Commands.DH_DRVMODE:
                     //Switches between physical (TRUE) and virtual mode (FALSE) (Optional)
+                     g_ICR2500_decl.bPhysical = System.Convert.ToBoolean(pVar);
+                     if (g_ICR2500_decl.bPhysical == false) 
+					{
+						//Virtual mode.
+                        g_ICR2500_decl.RcvSettings.Drvmode = "(Virtual)";
+                        g_ICR2500_decl.f.Text = g_ICR2500_decl.RcvSettings.Logname + " " + g_ICR2500_decl.RcvSettings.Drvmode;
+					}
+					else
+					{
+						//Physical mode is not available.
+                        g_ICR2500_decl.RcvSettings.Drvmode = "(Physical)";
+                        g_ICR2500_decl.f.Text = g_ICR2500_decl.RcvSettings.Logname + " " + g_ICR2500_decl.RcvSettings.Drvmode;
+					}
                     break;
 
                 case e_Commands.DH_LANGUAGE:
