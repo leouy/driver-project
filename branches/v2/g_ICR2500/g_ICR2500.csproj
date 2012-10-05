@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F2B7C5DE-0F41-4E69-AF22-1B7481FF300E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>g_ICR2500</RootNamespace>
+    <AssemblyName>g_ICR2500</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\..\..\..\ARGUS\Execute\Devices\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ExtDrv">
+      <HintPath>..\..\..\..\..\..\..\ExtDrv.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="QCChart2DNet">
+      <HintPath>..\..\..\..\..\..\..\QCChart2DNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="g_ICR2500.cs" />
+    <Compile Include="g_ICR2500_commmanager.cs" />
+    <Compile Include="g_ICR2500_constants.cs" />
+    <Compile Include="g_ICR2500_databag.cs" />
+    <Compile Include="g_ICR2500_decl.cs" />
+    <Compile Include="g_ICR2500_scan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="g_ICR2500_scan.Designer.cs">
+      <DependentUpon>g_ICR2500_scan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="g_ICR2500_ffm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="g_ICR2500_ffm.Designer.cs">
+      <DependentUpon>g_ICR2500_ffm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="g_ICR2500_frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="g_ICR2500_frm.Designer.cs">
+      <DependentUpon>g_ICR2500_frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="g_ICR2500_frmSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="g_ICR2500_frmSet.Designer.cs">
+      <DependentUpon>g_ICR2500_frmSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="g_ICR2500_icommanager.cs" />
+    <Compile Include="g_ICR2500_utils.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="g_ICR2500_scan.resx">
+      <DependentUpon>g_ICR2500_scan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="g_ICR2500_ffm.resx">
+      <DependentUpon>g_ICR2500_ffm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="g_ICR2500_frm.resx">
+      <DependentUpon>g_ICR2500_frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\icr2500.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
