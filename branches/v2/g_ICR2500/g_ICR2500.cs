@@ -14,7 +14,7 @@ namespace g_ICR2500
     {
         private g_ICR2500_icommanager IcomManager;
         #region IDciDriver Members
-        int k = 0;
+ //int k = 0;
         public void dci_GetDevice(int lCommand, int lType, ref object pVar, ref string pStr)
         {
             e_Commands eCommand;
@@ -274,8 +274,9 @@ namespace g_ICR2500
 
                 case e_Commands.DH_DRVMODE:
                     //Switches between physical (TRUE) and virtual mode (FALSE) (Optional)
-                     g_ICR2500_decl.bPhysical = System.Convert.ToBoolean(pVar);
-                     if (g_ICR2500_decl.bPhysical == false) 
+                    g_ICR2500_decl.bPhysical = System.Convert.ToBoolean(pVar);
+
+                    if (g_ICR2500_decl.bPhysical == false) 
 					{
 						//Virtual mode.
                         g_ICR2500_decl.RcvSettings.Drvmode = "(Virtual)";
@@ -283,10 +284,11 @@ namespace g_ICR2500
 					}
 					else
 					{
-						//Physical mode is not available.
+						//Physical mode
                         g_ICR2500_decl.RcvSettings.Drvmode = "(Physical)";
                         g_ICR2500_decl.f.Text = g_ICR2500_decl.RcvSettings.Logname + " " + g_ICR2500_decl.RcvSettings.Drvmode;
 					}
+
                     break;
 
                 case e_Commands.DH_LANGUAGE:
@@ -528,7 +530,22 @@ namespace g_ICR2500
 
                             //if (g_ICR2500_databag.GetInstance().M_Type == "Level")
                             // R&S cases for virtual mode are placed in SendMeasResultToArgus();
+                            if (g_ICR2500_decl.f == null)
+                                g_ICR2500_decl.f = new g_ICR2500_frm();
+                            if (g_ICR2500_decl.fSet == null)
+                                g_ICR2500_decl.fSet = new g_ICR2500_frmSet();
+ 
+                            UInt32 measmode = g_ICR2500_decl.UsedParams & g_ICR2500_decl.MEAS_PAGE;
+                            switch (measmode)
+                            {
+                                case g_ICR2500_decl.MEAS_SING:
+                                    g_ICR2500_decl.f.FFMTab.ActivateTimer();
+                                    break;
 
+                                case g_ICR2500_decl.MEAS_SCAN:
+                                    g_ICR2500_decl.f.DSCANTab.ActivateTimer();
+                                    break;
+                            }
                             break;
                         }
 
@@ -1014,24 +1031,80 @@ namespace g_ICR2500
         {
             if (!g_ICR2500_decl.bPhysical)
             {
-                //R&S physical should be caalled over timer only if you have problems
-                //delivering data direcly as you get them from the device
-
-                // R&S virtual mode
+                // virtual mode
                 Random rand = new Random();
-                string Selected_Freq = g_ICR2500_utils.ParseFullFrecuency(g_ICR2500_databag.GetInstance().CurrentFreq);
 
-                object oVarRes = new MarshalAsAttribute(UnmanagedType.LPArray);
-                double[,] dMeasResult = new double[2, 1];
-                dMeasResult[0, 0] = Convert.ToDouble(Selected_Freq);	//Frequency
-                //dMeasResult[1,0] = dc.RES_CTCSS;	//CTCSS result in TesDec sample.
-                dMeasResult[1, 0] = rand.NextDouble() * (-10); //for some Level
+                UInt32 measmode = g_ICR2500_decl.UsedParams & g_ICR2500_decl.MEAS_PAGE;
+                switch (measmode)
+                {
+                    case g_ICR2500_decl.MEAS_SING:
+                        {
+                            string Selected_Freq = g_ICR2500_utils.ParseFullFrecuency(g_ICR2500_databag.GetInstance().CurrentFreq);
 
-                oVarRes = dMeasResult;
-                dci_Data((Int32)e_Commands.DH_NFY_MEAS_DATA,
-                            (Int32)e_Commands.NFY_RESULT,
-                            ref oVarRes);
+                            object oVarRes = new MarshalAsAttribute(UnmanagedType.LPArray);
+                            double[,] dMeasResult = new double[2, 1];
+                            dMeasResult[0, 0] = Convert.ToDouble(Selected_Freq);	//Frequency
+                            //dMeasResult[1,0] = dc.RES_CTCSS;	//CTCSS result in TesDec sample.
+                            dMeasResult[1, 0] = rand.NextDouble() * (-10); //for some Level
 
+                            oVarRes = dMeasResult;
+                            dci_Data((Int32)e_Commands.DH_NFY_MEAS_DATA,
+                                        (Int32)e_Commands.NFY_RESULT,
+                                        ref oVarRes);
+                        }
+                        break;
+
+                    case g_ICR2500_decl.MEAS_DSCAN:
+                    // R&S as far as data is concerned it's the same type of array
+                    case g_ICR2500_decl.MEAS_SCAN:
+                        {
+                            object oVarRes = new MarshalAsAttribute(UnmanagedType.SafeArray);
+                            oVarRes = UnmanagedType.R8;
+                            //oVarRes = UnmanagedType;
+
+                            double start = Convert.ToDouble(g_ICR2500_databag.GetInstance().StartFreq);
+                            double step = Convert.ToDouble(g_ICR2500_databag.GetInstance().Step);
+                            double end = Convert.ToDouble(g_ICR2500_databag.GetInstance().EndFreq);
+
+                            int iSize = (int)((end - start) / step) + 1;
+                            double[,] dMeasResult = new double[2, iSize];
+
+                            // reorder so as to respect structure of unmanaged SAFEARRAY
+
+                            // there should be a method to set the marshaller to automatically use the right
+                            // order by setting the correct values to	SAFEARRAYBOUND	sab [2]; 
+                            // sab[0].lLbound = 0; sab[0].cElements = iCols;
+                            // sab[1].lLbound = 0; sab[1].cElements = MeasRes.iSize;
+                            // as soon as I find it, I'll send it to you 
+                            //int iCols = 2;
+                            //int [] dims = new int [iCols];
+
+                            //Array res = Array.CreateInstance (typeof (double), dims, 
+
+                            // can be realized writing a coustom marshaller
+                            int j = 0, i = 0;
+                            for (int k = 0; k < iSize; k++)
+                            {
+                                j = k % 2;
+                                dMeasResult[j, i] = start + k * step;
+                                if (j == 1) i++;
+                                j++;
+                            }
+                            for (int k = iSize; k < 2 * iSize; k++)
+                            {
+                                j = k % 2;
+                                dMeasResult[j, i] = rand.NextDouble() * (-10);
+                                if (j == 1) i++;
+                                j++;
+                            }
+
+                            oVarRes = dMeasResult;
+                            dci_Data((Int32)e_Commands.DH_NFY_MEAS_DATA,
+                                        (Int32)e_Commands.NFY_RESULT,
+                                        ref oVarRes);
+                        }
+                        break;
+                }
             }
             else
             {
