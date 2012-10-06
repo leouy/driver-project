@@ -275,6 +275,8 @@ namespace g_ICR2500
                 case e_Commands.DH_DRVMODE:
                     //Switches between physical (TRUE) and virtual mode (FALSE) (Optional)
                      g_ICR2500_decl.bPhysical = System.Convert.ToBoolean(pVar);
+                    //Hardcoded to true to avoid defaulting in virtual.
+                     g_ICR2500_decl.bPhysical = true;
                      if (g_ICR2500_decl.bPhysical == false) 
 					{
 						//Virtual mode.
