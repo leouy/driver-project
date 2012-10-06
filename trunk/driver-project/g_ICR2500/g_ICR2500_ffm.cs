@@ -45,7 +45,7 @@ namespace g_ICR2500
         {
 
             InitializeComponent();
-            IcomManager = g_ICR2500_icommanager.GetInstance();
+            
             this.Enabled = false;
             InitializeSquelchTrackBar();
             InitializeVolumeTrackBar();
@@ -55,6 +55,7 @@ namespace g_ICR2500
 
         private void g_ICR2500_ffm_Load(object sender, EventArgs e)
         {
+            IcomManager = g_ICR2500_icommanager.GetInstance();
             FrequencyStepLoad();
             //FilterLoad();
             //ModesLoad();

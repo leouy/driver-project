@@ -38,7 +38,7 @@ namespace g_ICR2500
         public g_ICR2500_scan()
         {
             InitializeComponent();
-            IcomManager = g_ICR2500_icommanager.GetInstance();
+            
             this.Enabled = false;
             NumPoints = 0;
             StartFrequency = 88000000;
@@ -46,6 +46,10 @@ namespace g_ICR2500
             txt_LowdBm.Text = "-127";
             txt_HighdBm.Text = "0";
             InitializeChart();
+        }
+        private void g_ICR2500_scan_Load(object sender, EventArgs e)
+        {
+            IcomManager = g_ICR2500_icommanager.GetInstance();
         }
 
         #endregion Constructor / FormLoad
@@ -479,5 +483,6 @@ namespace g_ICR2500
                 this.timerScan.Enabled = false; // for IMM one shot and DMM remote
         }
 
+     
     }
 }

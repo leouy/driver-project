@@ -27,7 +27,7 @@ namespace g_ICR2500
         {
             InitializeComponent();
             this.Icon = Properties.Resources.icr2500;
-            IcomManager = g_ICR2500_icommanager.GetInstance();
+           
             this.FFMTab = new g_ICR2500_ffm();
             tab_Page_FFM.Controls.AddRange(new Control[] { FFMTab });
             this.DSCANTab = new g_ICR2500_scan();
@@ -37,6 +37,7 @@ namespace g_ICR2500
 
         private void g_ICR2500_frm_Load(object sender, EventArgs e)
         {
+            IcomManager = g_ICR2500_icommanager.GetInstance();
             FilterLoad();
             ModesLoad();
             LoadFormValues();
