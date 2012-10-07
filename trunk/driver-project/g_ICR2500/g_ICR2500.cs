@@ -274,21 +274,20 @@ namespace g_ICR2500
 
                 case e_Commands.DH_DRVMODE:
                     //Switches between physical (TRUE) and virtual mode (FALSE) (Optional)
-                     g_ICR2500_decl.bPhysical = System.Convert.ToBoolean(pVar);
-                    //Hardcoded to true to avoid defaulting in virtual.
-                     g_ICR2500_decl.bPhysical = true;
-                     if (g_ICR2500_decl.bPhysical == false) 
-					{
-						//Virtual mode.
+                    g_ICR2500_decl.bPhysical = System.Convert.ToBoolean(pVar);
+                    g_ICR2500_decl.bPhysical = true;
+                    if (g_ICR2500_decl.bPhysical == false)
+                    {
+                        //Virtual mode.
                         g_ICR2500_decl.RcvSettings.Drvmode = "(Virtual)";
                         g_ICR2500_decl.f.Text = g_ICR2500_decl.RcvSettings.Logname + " " + g_ICR2500_decl.RcvSettings.Drvmode;
-					}
-					else
-					{
-						//Physical mode is not available.
+                    }
+                    else
+                    {
+                        //Physical mode is not available.
                         g_ICR2500_decl.RcvSettings.Drvmode = "(Physical)";
                         g_ICR2500_decl.f.Text = g_ICR2500_decl.RcvSettings.Logname + " " + g_ICR2500_decl.RcvSettings.Drvmode;
-					}
+                    }
                     break;
 
                 case e_Commands.DH_LANGUAGE:
@@ -655,7 +654,7 @@ namespace g_ICR2500
                         }
 
                     }
-                 
+
                     break;
 
                 #endregion
@@ -912,7 +911,7 @@ namespace g_ICR2500
                 while (!(double.Parse(data.CurrentFreq) > double.Parse(data.EndFreq)))
                 {
                     string currFreq = g_ICR2500_utils.ParseFullFrecuency(data.CurrentFreq);
-                   
+
                     IcomManager.SetFrequency(currFreq, data.Filter, data.Mode);
                     IcomManager.AskFrequencyStrength();
 
