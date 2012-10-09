@@ -60,6 +60,7 @@
             // 
             // txt_Step
             // 
+            this.txt_Step.Culture = new System.Globalization.CultureInfo("en-US");
             this.txt_Step.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Step.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Overwrite;
             this.txt_Step.Location = new System.Drawing.Point(179, 71);
@@ -124,6 +125,7 @@
             // 
             // txt_HighdBm
             // 
+            this.txt_HighdBm.Culture = new System.Globalization.CultureInfo("en-US");
             this.txt_HighdBm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_HighdBm.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Overwrite;
             this.txt_HighdBm.Location = new System.Drawing.Point(180, 35);
@@ -138,6 +140,7 @@
             // 
             // txt_LowdBm
             // 
+            this.txt_LowdBm.Culture = new System.Globalization.CultureInfo("en-US");
             this.txt_LowdBm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_LowdBm.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Overwrite;
             this.txt_LowdBm.Location = new System.Drawing.Point(180, 5);
@@ -196,6 +199,7 @@
             // 
             // txt_startFreqMask
             // 
+            this.txt_startFreqMask.Culture = new System.Globalization.CultureInfo("en-US");
             this.txt_startFreqMask.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_startFreqMask.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Overwrite;
             this.txt_startFreqMask.Location = new System.Drawing.Point(179, 11);
@@ -210,6 +214,7 @@
             // 
             // txt_endFreqMask
             // 
+            this.txt_endFreqMask.Culture = new System.Globalization.CultureInfo("en-US");
             this.txt_endFreqMask.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_endFreqMask.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Overwrite;
             this.txt_endFreqMask.Location = new System.Drawing.Point(179, 41);
