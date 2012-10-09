@@ -45,7 +45,6 @@ namespace g_ICR2500
         {
 
             InitializeComponent();
-            
             this.Enabled = false;
             InitializeSquelchTrackBar();
             InitializeVolumeTrackBar();

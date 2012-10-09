@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Configuration;
 using Microsoft.Win32;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace g_ICR2500
 {
@@ -107,6 +108,7 @@ namespace g_ICR2500
         {
             try
             {
+                Thread.Sleep(10000);
                 string PortName = null;
                 Dictionary<string, string> friendlyPorts = BuildPortNameHash(SerialPort.GetPortNames());
                 if (g_ICR2500_decl.bPhysical)

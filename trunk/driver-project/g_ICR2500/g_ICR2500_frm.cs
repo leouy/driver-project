@@ -27,7 +27,6 @@ namespace g_ICR2500
         {
             InitializeComponent();
             this.Icon = Properties.Resources.icr2500;
-           
             this.FFMTab = new g_ICR2500_ffm();
             tab_Page_FFM.Controls.AddRange(new Control[] { FFMTab });
             this.DSCANTab = new g_ICR2500_scan();
