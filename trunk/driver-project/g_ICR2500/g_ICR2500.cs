@@ -1257,8 +1257,16 @@ namespace g_ICR2500
 
         public static void dci_Data(Int32 lCommand, Int32 lType, ref object pVar)
         {
-            string sEmpty = null;
-            g_ICR2500_decl.nfy.dci_DeviceData(lCommand, lType, ref pVar, ref sEmpty);
+            try
+            {
+                string sEmpty = null;
+                g_ICR2500_decl.nfy.dci_DeviceData(lCommand, lType, ref pVar, ref sEmpty);
+            }
+            catch (Exception)
+            {
+
+            }
+
 
         }//End of dci_Data()
     }
