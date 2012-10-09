@@ -10,11 +10,11 @@ namespace g_ICR2500
         //Constants of the device.
         public const string C_CLASSCODE = "CLASS_RECEIVER";
         public const string C_PHYNAME = "DCI_RCV";
-        public const string C_VERSION = "DCI_RCV.1.0.0";
+        public const string C_VERSION = "ICR2500.1.0.0";
 
         //Default-Settings.
         public const string DEFAULT_DRVMODE = "(Physical)";
-        public const string DEFAULT_LOGNAME = "DCI_RCV";
+        public const string DEFAULT_LOGNAME = "ICR2500";
 
         public static string REG_PATH = "";						//Registry path for device-settings.
         public static string REG_DIR = "";
@@ -29,7 +29,7 @@ namespace g_ICR2500
 
         public static bool RES_AS_STRING = false;   //string=true, double=false;
 
-        public static bool bPhysical = true;
+        public static bool bPhysical = false;
 
         public const int MEAS_LEV = 0x0001;
         public const int MEAS_OFFS = 0x0002;
