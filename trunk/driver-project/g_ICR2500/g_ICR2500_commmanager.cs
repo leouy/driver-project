@@ -108,7 +108,6 @@ namespace g_ICR2500
         {
             try
             {
-                Thread.Sleep(10000);
                 string PortName = null;
                 Dictionary<string, string> friendlyPorts = BuildPortNameHash(SerialPort.GetPortNames());
                 if (g_ICR2500_decl.bPhysical)
