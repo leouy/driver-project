@@ -747,8 +747,7 @@ namespace g_ICR2500
 
                             IcomManager.SetBaudRate("05");
                             IcomManager.SetFrequency(g_ICR2500_utils.ParseFullFrecuency(FreqVal), FilterVal, ModeVal);
-                            IcomManager.SetVolume("50");
-                            IcomManager.SetSquelch("00");
+
 
                         }
                         if (g_ICR2500_databag.GetInstance().BandScopeScan)
@@ -759,7 +758,11 @@ namespace g_ICR2500
                         }
                     }
 
-
+                    if (g_ICR2500_decl.STATIONMODE == (int)g_ICR2500_decl.UNIT.M)
+                    {
+                        IcomManager.SetVolume("10");
+                        IcomManager.SetSquelch("00");
+                    }
                     break;
 
                 case e_Commands.DH_FREQ_START:
