@@ -760,7 +760,7 @@ namespace g_ICR2500
 
                     if (g_ICR2500_decl.STATIONMODE == (int)g_ICR2500_decl.UNIT.M)
                     {
-                        IcomManager.SetVolume("10");
+                        IcomManager.SetVolume("01");
                         IcomManager.SetSquelch("00");
                     }
                     break;
