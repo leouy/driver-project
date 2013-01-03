@@ -747,7 +747,7 @@ namespace g_ICR2500
 
                             IcomManager.SetBaudRate("05");
                             IcomManager.SetFrequency(g_ICR2500_utils.ParseFullFrecuency(FreqVal), FilterVal, ModeVal);
-                            //IcomManager.SetVolume("00");
+                            IcomManager.SetVolume("50");
                             //IcomManager.SetSquelch("00");
 
                         }
