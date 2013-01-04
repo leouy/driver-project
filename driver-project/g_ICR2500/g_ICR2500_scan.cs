@@ -354,7 +354,7 @@ namespace g_ICR2500
                 // Dataset1.SetYDataValue(i,y);
             }
             ChartDSCAN.UpdateDraw();
-            if (!chk_Continuous.Checked)
+            if (!chk_Continuous.Checked && g_ICR2500_decl.STATIONMODE == (int)g_ICR2500_decl.UNIT.C)
             {
                 BandscopeClickEvent();
             }
@@ -439,7 +439,13 @@ namespace g_ICR2500
             while (BandScopeVisible_DSCAN)
             {
                 if (CurrentFreq > EndFreqEnd)
+                {
+                    if (g_ICR2500_decl.STATIONMODE == (int)g_ICR2500_decl.UNIT.CM && !chk_Continuous.Checked) 
+                    {
+                        BandscopeClickEvent();
+                    }
                     CurrentFreq = StartFreqStart;//1 lap
+                }
                 string currFreq = g_ICR2500_utils.ParseFullFrecuency(CurrentFreq.ToString());
 
                 g_ICR2500_databag.GetInstance().CurrentFreq = currFreq;
