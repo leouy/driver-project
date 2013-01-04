@@ -51,6 +51,7 @@
             this.pct_OFF = new System.Windows.Forms.PictureBox();
             this.pct_ON = new System.Windows.Forms.PictureBox();
             this.timerScan = new System.Windows.Forms.Timer(this.components);
+            this.chk_Continuous = new System.Windows.Forms.CheckBox();
             this.pnl_GraphLimits.SuspendLayout();
             this.pnl_MeasParam.SuspendLayout();
             this.pnl_StartBtn.SuspendLayout();
@@ -256,7 +257,7 @@
             // 
             // btn_startBandScope
             // 
-            this.btn_startBandScope.Location = new System.Drawing.Point(187, 5);
+            this.btn_startBandScope.Location = new System.Drawing.Point(119, 5);
             this.btn_startBandScope.Name = "btn_startBandScope";
             this.btn_startBandScope.Size = new System.Drawing.Size(82, 21);
             this.btn_startBandScope.TabIndex = 101;
@@ -267,6 +268,7 @@
             // pnl_StartBtn
             // 
             this.pnl_StartBtn.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnl_StartBtn.Controls.Add(this.chk_Continuous);
             this.pnl_StartBtn.Controls.Add(this.btn_startBandScope);
             this.pnl_StartBtn.Controls.Add(this.pct_OFF);
             this.pnl_StartBtn.Controls.Add(this.pct_ON);
@@ -278,7 +280,7 @@
             // pct_OFF
             // 
             this.pct_OFF.Image = global::g_ICR2500.Properties.Resources.off;
-            this.pct_OFF.Location = new System.Drawing.Point(144, 3);
+            this.pct_OFF.Location = new System.Drawing.Point(67, 3);
             this.pct_OFF.Name = "pct_OFF";
             this.pct_OFF.Size = new System.Drawing.Size(25, 25);
             this.pct_OFF.TabIndex = 109;
@@ -287,7 +289,7 @@
             // pct_ON
             // 
             this.pct_ON.Image = global::g_ICR2500.Properties.Resources.on;
-            this.pct_ON.Location = new System.Drawing.Point(144, 3);
+            this.pct_ON.Location = new System.Drawing.Point(67, 3);
             this.pct_ON.Name = "pct_ON";
             this.pct_ON.Size = new System.Drawing.Size(25, 25);
             this.pct_ON.TabIndex = 110;
@@ -297,6 +299,16 @@
             // 
             this.timerScan.Interval = 50;
             this.timerScan.Tick += new System.EventHandler(this.timerScan_Tick);
+            // 
+            // chk_Continuous
+            // 
+            this.chk_Continuous.AutoSize = true;
+            this.chk_Continuous.Location = new System.Drawing.Point(237, 6);
+            this.chk_Continuous.Name = "chk_Continuous";
+            this.chk_Continuous.Size = new System.Drawing.Size(107, 17);
+            this.chk_Continuous.TabIndex = 111;
+            this.chk_Continuous.Text = "Continuous Scan";
+            this.chk_Continuous.UseVisualStyleBackColor = true;
             // 
             // g_ICR2500_scan
             // 
@@ -313,6 +325,7 @@
             this.pnl_MeasParam.ResumeLayout(false);
             this.pnl_MeasParam.PerformLayout();
             this.pnl_StartBtn.ResumeLayout(false);
+            this.pnl_StartBtn.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pct_OFF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pct_ON)).EndInit();
             this.ResumeLayout(false);
@@ -343,5 +356,6 @@
         private System.Windows.Forms.Button btn_startBandScope;
         private System.Windows.Forms.Panel pnl_StartBtn;
         private System.Windows.Forms.Timer timerScan;
+        private System.Windows.Forms.CheckBox chk_Continuous;
     }
 }
