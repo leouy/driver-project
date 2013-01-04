@@ -171,13 +171,15 @@ namespace g_ICR2500
 
                 InitMeas();
 
-                ChartDSCAN.ResetChartObjectList();
-                InitializeChart();
+                //ChartDSCAN.ResetChartObjectList();
+                //InitializeChart();
                 BandScopeVisible_DSCAN = !BandScopeVisible_DSCAN;
                 g_ICR2500_databag.GetInstance().BandScopeScan = BandScopeVisible_DSCAN;
 
                 if (BandScopeVisible_DSCAN)
                 {
+                    ChartDSCAN.ResetChartObjectList();
+                    InitializeChart();
                     DSCAN_On();
                 }
                 else
