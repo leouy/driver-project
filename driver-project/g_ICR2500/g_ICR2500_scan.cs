@@ -354,15 +354,11 @@ namespace g_ICR2500
                 // Dataset1.SetYDataValue(i,y);
             }
             ChartDSCAN.UpdateDraw();
-            if (g_ICR2500_decl.STATIONMODE == (int)g_ICR2500_decl.UNIT.C && !chk_Continuous.Checked)
-            {
-                DSCAN_Remote_Off();
-            }
-            else 
+            if (!chk_Continuous.Checked)
             {
                 BandscopeClickEvent();
             }
-        }
+         }
 
         [STAThread]
         public void UpdateDSCAN()
