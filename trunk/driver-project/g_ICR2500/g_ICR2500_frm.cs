@@ -128,12 +128,11 @@ namespace g_ICR2500
                         IcomManager.TurnOff();
                         IcomManager.AutoUpdate(false);
                         g_ICR2500_databag.GetInstance().IcomOn = false;
+                        g_ICR2500_icommanager.GetInstance().AutoUpdate(true);
                     }
                     
                 }
-               
-
-                g_ICR2500_icommanager.GetInstance().AutoUpdate(true);
+              
                 FFMTab.SetFrequency();
                 g_ICR2500_databag.GetInstance().IMM = false;
                 g_ICR2500_databag.GetInstance().M_Type = "Level";
@@ -169,14 +168,13 @@ namespace g_ICR2500
                 else
                 {
                     DSCANTab.DSCAN_Off();
+                    g_ICR2500_icommanager.GetInstance().AutoUpdate(false);
                 }
 
                 g_ICR2500_databag.GetInstance().IMM = false;
                 g_ICR2500_databag.GetInstance().M_Type = "Scan Level";
                 g_ICR2500_decl.UsedParams = 8193;
-
-
-                g_ICR2500_icommanager.GetInstance().AutoUpdate(false);
+                
             }
         }
 
